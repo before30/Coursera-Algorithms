@@ -1,3 +1,5 @@
+package old;
+
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 //import java.util.*;
@@ -118,7 +120,7 @@ public class Percolation {
 //            FileReader reader = new FileReader(file);
 //            Scanner sc2 = new Scanner(reader);
 //            int n = sc2.nextInt();
-//            Percolation p = new Percolation(n);
+//            old.Percolation p = new old.Percolation(n);
 //            while(true) {
 //                try {
 //                    int i = sc2.nextInt();

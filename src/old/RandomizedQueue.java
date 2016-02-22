@@ -1,3 +1,5 @@
+package old;
+
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.ArrayList;
@@ -97,7 +99,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
 //
 //    // construct an empty randomized queue
-//    public RandomizedQueue() {
+//    public old.RandomizedQueue() {
 //
 //    }
 //
