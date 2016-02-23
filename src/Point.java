@@ -52,12 +52,19 @@ public class Point implements Comparable<Point>  {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        if (this.compareTo(that) == 0) {
-            return Double.NEGATIVE_INFINITY;
-        } else if (this.x == that.x) {
+        if (that == null) {
+            throw new java.lang.NullPointerException();
+        }
+        if (this.x != that.x) {
+            if (this.y != that.y) {
+                return (double) (this.y - that.y)/(this.x - that.x);
+            } else {
+                return +0.0;
+            }
+        } else if (this.y != that.y) {
             return Double.POSITIVE_INFINITY;
         } else {
-            return (that.y - this.y) / (that.x - this.x);
+            return Double.NEGATIVE_INFINITY;
         }
     }
 
@@ -74,12 +81,19 @@ public class Point implements Comparable<Point>  {
      *         argument point
      */
     public int compareTo(Point that) {
-        if (this.x == that.x && this.y == that.y) {
-            return 0;
-        } else if (this.x < that.x && this.y <= that.y) {
+        if (that == null) {
+            throw new java.lang.NullPointerException();
+        }
+        if (this.y < that.y) {
             return -1;
+        } else if (this.y > that.y) {
+            return 1;
+        } else if (this.x < that.x) {
+            return -1;
+        } else if (this.x > that.x) {
+            return 1;
         } else {
-            return +1;
+            return 0;
         }
     }
 
@@ -91,9 +105,24 @@ public class Point implements Comparable<Point>  {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
-        return null;
+        return new SlopeOrder();
     }
 
+    private class SlopeOrder implements Comparator<Point> {
+
+        @Override
+        public int compare(Point o1, Point o2) {
+            double s1 = slopeTo(o1);
+            double s2 = slopeTo(o2);
+            if(s1 > s2) {
+                return 1;
+            } else if (s1 < s2) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    }
 
     /**
      * Returns a string representation of this point.
